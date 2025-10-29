@@ -1,8 +1,34 @@
+#include "Game.h"
+
 #include <SDL3/SDL.h>
+#include <exception>
+#include <iostream>
 
 int main()
 {
-	if (!SDL_Init(SDL_INIT_VIDEO))
-		throw SDL_GetError();
+	Game game;
+
+	try
+	{
+		game.Init();
+	}
+	catch (std::exception& e)
+	{
+		std::cout << "Error: " << e.what();
+
+		game.Release();
+
+		return -1;
+	}
+
+	while (game.IsRunning())
+	{
+		game.HandelEvents();
+		game.Update();
+		game.Render();
+	}
+
+	game.Release();
+
 	return 0;
 }
