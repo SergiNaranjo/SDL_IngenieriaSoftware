@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GameObject.h"
+#include "ImageObject.h"
 #include <SDL3/SDL.h>
 #include <vector>
 
@@ -24,5 +24,5 @@ private:
 	bool _isRunning;
 	SDL_Window* _window;
 	SDL_Renderer* _renderer;
-	std::vector<GameObject> _gameObjects;
+	std::vector<Object*> _gameObjects;
 };
