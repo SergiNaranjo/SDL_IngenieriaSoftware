@@ -14,6 +14,7 @@ protected:
 	SDL_FRect _sourceRect;
 	SDL_FRect _destinationRect;
 	std::string _resourcePath;
+	SDL_Texture* _texture;
 
 public:
 	Renderer(Transform* transform, std::string resourcePath) : _transform(transform), _resourcePath(resourcePath) {}

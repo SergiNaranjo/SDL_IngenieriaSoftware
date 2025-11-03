@@ -15,20 +15,23 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\main.cpp">
-      <Filter>Archivos de recursos</Filter>
+    <ClCompile Include="source\InputManager.cpp">
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="source\Game.cpp">
-      <Filter>Archivos de recursos</Filter>
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="source\ImageRenderer.cpp">
-      <Filter>Archivos de recursos</Filter>
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="source\Transform.cpp">
-      <Filter>Archivos de recursos</Filter>
+    <ClCompile Include="source\main.cpp">
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="source\RenderManager.cpp">
-      <Filter>Archivos de recursos</Filter>
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Transform.cpp">
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +57,12 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="source\RenderManager.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="source\TestObject.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="source\InputManager.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

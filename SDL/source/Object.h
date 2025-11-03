@@ -2,25 +2,55 @@
 
 #include "Vector2.h"
 #include "Renderer.h"
+#include "Transform.h"
 #include <string>
 #include <SDL3/SDL.h>
 
 class Object
 {
+private:
+	bool _isPendingDestroy = false;
 protected:
-	Vector2 _position;
-	Renderer* _renderer;
+	Transform* _transform;
+	Renderer* _renderer = nullptr;
 
 public:
-	Object() { _position = Vector2(); _renderer = nullptr; }
-
-	void SetPosition(Vector2 position)
-	{
-		_position = position;
-		_renderer->SetDestinationRect({ _position.x, _position.y, 100.f, 100.f });
+	Object() 
+	{ 
+		_transform = new Transform();
 	}
 
-	Vector2 GetPosition() const { return _position; }
-	virtual void Update() { _renderer->Update(); }
-	virtual void Render(SDL_Renderer* renderer) { _renderer->Render(renderer); }
+	virtual void Update() 
+	{ 
+		_renderer->Update(0.02f);
+	}
+
+	virtual void Render() 
+	{ 
+		_renderer->Render(); 
+	}
+
+	Transform* GetTransform()
+	{
+		return _transform;
+	}
+
+	bool IsPendingDestroy() const
+	{
+		return _isPendingDestroy;
+	}
+
+	virtual void Destroy()
+	{
+		_isPendingDestroy = true;
+	}
+
+	/*~Object()
+	{
+		delete _transform;
+		_transform = nullptr;
+
+		delete _renderer;
+		_renderer = nullptr;
+	}*/
 };

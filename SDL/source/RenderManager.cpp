@@ -48,14 +48,14 @@ void RenderManager::Release()
 	SDL_DestroyWindow(_window);
 }
 
-void RenderManager::ClearScreen()
-{
-	SDL_RenderClear(_renderer);
-}
-
 void RenderManager::RenderScreen()
 {
 	SDL_RenderPresent(_renderer);
+}
+
+void RenderManager::ClearScreen()
+{
+	SDL_RenderClear(_renderer);
 }
 
 void RenderManager::LoadTexture(std::string path)
