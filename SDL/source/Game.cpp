@@ -46,11 +46,6 @@ void Game::Update()
 	{
 		go->Update();
 	}
-
-	if (IM->GetEvent(SDLK_S, KeyState::DOWN))
-	{
-		SDL_SetRenderDrawColor(_renderer, 225, 0, 200, 0xFF);
-	}
 }
 
 void Game::Render()
