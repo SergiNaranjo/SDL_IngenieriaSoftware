@@ -7,14 +7,10 @@
 void Game::Init()
 {
 	RM->Init();
-
 	RM->LoadTexture("resources/image.png");
 
-	TestObject test1 = TestObject();
-	_gameObjects.push_back(new ImageObject(test1));
-
-	TestObject test2 = TestObject();
-	_gameObjects.push_back(new ImageObject(test2));
+	_gameObjects.push_back(new TestObject());
+	_gameObjects.push_back(new TestObject());
 
 	_isRunning = true;
 }
@@ -62,6 +58,12 @@ void Game::Render()
 
 void Game::Release()
 {
+	for (Object* go : _gameObjects)
+	{
+		delete go;
+	}
+	_gameObjects.clear();
+
 	SDL_DestroyRenderer(_renderer);
 	SDL_DestroyWindow(_window);
 	SDL_Quit();
