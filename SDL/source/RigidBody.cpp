@@ -39,7 +39,7 @@ void RigidBody::Update(float dt)
     _transform->rotation = _transform->rotation + _angularVelocity * dt;
 
     _acceleration = Vector2();
-    _angularAcceleration = 0.0f;
+    _angularAcceleration = 30.0f;
 
     Vector2 offset = (Vector2(-_transform->size.x, -_transform->size.y) / 2.0f) * _transform->scale;
 

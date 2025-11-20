@@ -1,16 +1,16 @@
 #include "Object.h"
 #include "Game.h"
-#include "ImageObject.h"
-#include "TestObject.h"
 #include "InputManager.h"
+#include "SceneManager.h"
+#include "Gameplay.h"
 
 void Game::Init()
 {
 	RM->Init();
 	RM->LoadTexture("resources/image.png");
 
-	_gameObjects.push_back(new TestObject());
-	_gameObjects.push_back(new TestObject());
+	assert(SM.AddScene("Gameplay", new Gameplay()));
+	assert(SM.InitFirstScene("Gameplay"));
 
 	_isRunning = true;
 }
@@ -38,34 +38,19 @@ void Game::HandelEvents()
 
 void Game::Update()
 {
-	for (Object* go : _gameObjects)
-	{
-		go->Update();
-	}
+	SM.UpdateCurrentScene();
 }
 
 void Game::Render()
 {
 	RM->ClearScreen();
-
-	for (Object* go : _gameObjects)
-	{
-		go->Render();
-	}
-
+	SM.GetCurrentScene()->Render();
 	RM->RenderScreen();
 }
 
 void Game::Release()
 {
-	for (Object* go : _gameObjects)
-	{
-		delete go;
-	}
-	_gameObjects.clear();
-
-	SDL_DestroyRenderer(_renderer);
-	SDL_DestroyWindow(_window);
+	RM->Release();
 	SDL_Quit();
 }
 

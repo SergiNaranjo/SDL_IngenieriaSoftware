@@ -24,5 +24,4 @@ private:
 	bool _isRunning;
 	SDL_Window* _window;
 	SDL_Renderer* _renderer;
-	std::vector<Object*> _gameObjects;
 };
