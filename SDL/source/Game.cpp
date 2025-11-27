@@ -8,6 +8,7 @@ void Game::Init()
 {
 	RM->Init();
 	RM->LoadTexture("resources/image.png");
+	RM->LoadFont(FONT_PATH);
 
 	assert(SM.AddScene("Gameplay", new Gameplay()));
 	assert(SM.InitFirstScene("Gameplay"));

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Object.h"
+#include "Spawner.h"
 
 #include <vector>
 
@@ -16,6 +17,8 @@ public:
 
 	virtual void OnExit()
 	{
+		SPAWNER.ClearSpawner();
+
 		for (Object* o : _objects)
 		{
 			delete o;
@@ -49,6 +52,11 @@ public:
 				delete _ui[i];
 				_ui.erase(_ui.begin() + i);
 			}
+		}
+
+		while (SPAWNER.AreObjectsEndingSpawn())
+		{
+			_objects.push_back(SPAWNER.GetSpawnedObject());
 		}
 
 		for (Object* o : _objects)

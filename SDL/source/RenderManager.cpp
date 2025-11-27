@@ -7,11 +7,22 @@ RenderManager::~RenderManager()
 		SDL_DestroyTexture(it->second);
 		it->second = nullptr;
 	}
+
+	for (std::map<std::string, TTF_Font*>::iterator it = _fonts.begin(); it != _fonts.end(); it++)
+	{
+		TTF_CloseFont(it->second);
+		it->second = nullptr;
+	}
 }
 
 void RenderManager::InitSDL()
 {
-	if (!SDL_Init(SDL_INIT_VIDEO))
+	if (SDL_Init(SDL_INIT_VIDEO) < 0)
+	{
+		throw SDL_GetError();
+	}
+
+	if (TTF_Init() < 0)
 	{
 		throw SDL_GetError();
 	}
@@ -74,6 +85,26 @@ SDL_Texture* RenderManager::GetTexture(std::string path)
 	if (_textures.find(path) != _textures.end())
 	{
 		return _textures[path];
+	}
+
+	return nullptr;
+}
+
+void RenderManager::LoadFont(std::string path)
+{
+	if (_fonts.find(path) != _fonts.end())
+	{
+		return;
+	}
+
+	_fonts[path] = TTF_OpenFont(path.c_str(), 24);
+}
+
+TTF_Font* RenderManager::GetFont(std::string path)
+{
+	if (_fonts.find(path) != _fonts.end())
+	{
+		return _fonts[path];
 	}
 
 	return nullptr;
