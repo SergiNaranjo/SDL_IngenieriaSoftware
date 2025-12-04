@@ -3,6 +3,7 @@
 #include "InputManager.h"
 #include "SceneManager.h"
 #include "Gameplay.h"
+#include "MainMenu.h"
 
 void Game::Init()
 {
@@ -10,8 +11,10 @@ void Game::Init()
 	RM->LoadTexture("resources/image.png");
 	RM->LoadFont(FONT_PATH);
 
+
+	assert(SM.AddScene("MainMenu", new MainMenu()));
 	assert(SM.AddScene("Gameplay", new Gameplay()));
-	assert(SM.InitFirstScene("Gameplay"));
+	assert(SM.InitFirstScene("MainMenu"));
 
 	_isRunning = true;
 }
