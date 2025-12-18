@@ -22,6 +22,7 @@ void RenderManager::InitSDL()
 		throw SDL_GetError();
 	}
 
+
 	if (TTF_Init() < 0)
 	{
 		throw SDL_GetError();

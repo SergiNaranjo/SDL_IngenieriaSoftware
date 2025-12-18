@@ -31,6 +31,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\AABB.h" />
+    <ClInclude Include="source\AtomicWrapper.h" />
+    <ClInclude Include="source\AudioManager.h" />
     <ClInclude Include="source\Button.h" />
     <ClInclude Include="source\Game.h" />
     <ClInclude Include="source\Gameplay.h" />
@@ -45,6 +47,7 @@
     <ClInclude Include="source\Scene.h" />
     <ClInclude Include="source\SceneManager.h" />
     <ClInclude Include="source\Spawner.h" />
+    <ClInclude Include="source\Stream.h" />
     <ClInclude Include="source\TestObject.h" />
     <ClInclude Include="source\TextObject.h" />
     <ClInclude Include="source\TextRenderer.h" />

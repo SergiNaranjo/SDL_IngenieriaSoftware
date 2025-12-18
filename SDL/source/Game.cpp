@@ -4,12 +4,16 @@
 #include "SceneManager.h"
 #include "Gameplay.h"
 #include "MainMenu.h"
+#include "AudioManager.h"
 
 void Game::Init()
 {
+	AM->Init();
 	RM->Init();
 	RM->LoadTexture("resources/image.png");
 	RM->LoadFont(FONT_PATH);
+	AM->LoadSoundData("resources/audio/sfx/defeat.wav");
+	AM->LoadSoundData("resources/audio/music/froggerSong.wav");
 
 
 	assert(SM.AddScene("MainMenu", new MainMenu()));
@@ -55,6 +59,7 @@ void Game::Render()
 void Game::Release()
 {
 	RM->Release();
+	AM->HaltAudio();
 	SDL_Quit();
 }
 
